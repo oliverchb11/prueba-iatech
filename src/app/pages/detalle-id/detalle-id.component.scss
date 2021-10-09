@@ -1,0 +1,22 @@
+.contenido-peliculas {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    padding-left: 10;
+    padding-right: 10;
+}
+
+.contenido {
+    width: 100%;
+}
+
+.card {
+    display: flex !important;
+    flex-direction: row;
+    height: 500px;
+}
+
+.card-bodys {
+    padding: 10px;
+}

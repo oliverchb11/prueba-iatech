@@ -1,0 +1,40 @@
+<app-navbar (peliculaData)="buscarMovie($event)" [btnBuscar]="true"></app-navbar>
+
+<div class="contenido-peliculas">
+    <div class="row mt-5">
+        <div class="col ml-5">
+            <h2 class="text-center">Peliculas</h2>
+        </div>
+    </div>
+    <div class="row mt-4 pd-5">
+        <div class="col-md-4 col-sm-6 col-lg-3 contenido" *ngFor="let movie of resultsMovies">
+            <div class="card" style="width: 18rem;">
+                <img src="https://image.tmdb.org/t/p/w500{{movie.poster_path}}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">{{movie.title}}</h5>
+                    <p class="card-text">{{movie.overview | slice:0:90}}...</p>
+                    <p class="card-text">Idioma Original: <span class="badge bg-success">{{movie.original_language}}</span> </p>
+                    <div class="starts text-center">
+                        <star-rating [value]="5" [totalstars]="movie.vote_average" checkedcolor="#C8A634" uncheckedcolor="black" size="24px"></star-rating>
+                    </div>
+                    <br>
+                    <a class="btn btn-primary form-control" (click)="detallePelicula(movie.id)">Detalle</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="pagination">
+    <div class="row">
+        <div class="col ">
+            <nav aria-label="Page navigation example">
+                <ul class="pagination">
+                    <li class="page-item"><a class="page-link" (click)="anteriorPage()">Anterior</a></li>
+                    <li *ngFor="let item of page; let i = index" class="page-item" [ngClass]="{'active': i + 1 ===  contador }" (click)="pagination(i+1)"><a class="page-link">{{i + 1}}</a></li>
+                    <li class="page-item"><a class="page-link" (click)="siguientePage()">Siguiente</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</div>
